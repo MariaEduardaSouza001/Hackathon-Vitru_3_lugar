@@ -94,7 +94,7 @@ flowchart LR
 
 ## Minha contribuição
 
-Sou **Maria Eduarda Leonardo** e, neste projeto, fiquei com três frentes:
+Sou **Maria Eduarda Leonardo De Souza** e, neste projeto, fiquei com quatro frentes:
 
 **Interface da Sofia e do Edu** (`Front/SOFIA-EDU-CHAT`)
 - Chat conversacional em HTML, CSS e JavaScript, com a troca de identidade visual entre Sofia (Uniasselvi) e Edu (UniCesumar).
@@ -106,10 +106,13 @@ Sou **Maria Eduarda Leonardo** e, neste projeto, fiquei com três frentes:
 - Indicadores do "resgate de calouros": onboarding com a assistente, alunos sem entrega na 1ª disciplina, receita prospectada e tempo de interação.
 - Comparação entre o desempenho atual e o projetado em cada avaliação, e um funil de engajamento, separados por instituição.
 
+**Apoio aos testes da IA**
+- Ajudei a testar as conversas com a assistente de voz e o plano semanal gerado, simulando rotinas de alunos e apontando respostas fora do esperado para a equipe ajustar.
+
 **Pitch e defesa para a banca** ([PDF](./Pitch_Hack_Grupo_5.pdf))
-- Pesquisa do problema e dos dados de evasão na EAD.
-- Dimensionamento da receita em risco e o raciocínio de retorno do piloto.
-- Narrativa da apresentação: tempo, rotina, entrega, engajamento, retenção e receita.
+- Idealizei o pitch: a narrativa da apresentação, de tempo e rotina até entrega, engajamento, retenção e receita.
+- Fiz a pesquisa do problema e dos dados de evasão na EAD.
+- Fiz as pesquisas e análises que deram origem ao **ROI, ao CAPEX e ao OPEX** do projeto, incluindo o dimensionamento da receita em risco e o retorno esperado do piloto.
 
 **O que aprendi:** desenhar a experiência de uma IA conversacional, em que o tom, o número de perguntas e o que *não* perguntar fazem tanta diferença quanto o modelo. Também aprendi a traduzir um produto de IA em indicadores de negócio que uma banca consegue avaliar.
 
@@ -122,7 +125,7 @@ Sou **Maria Eduarda Leonardo** e, neste projeto, fiquei com três frentes:
 | Gabriel Augusto | [@Gabriel-ASM](https://github.com/Gabriel-ASM) |
 | Henrique Soares Serra | |
 | Eduardo Barbosa | |
-| Maria Eduarda Leonardo | [@MariaEduardaSouza001](https://github.com/MariaEduardaSouza001) |
+| Maria Eduarda Leonardo De Souza | [@MariaEduardaSouza001](https://github.com/MariaEduardaSouza001) |
 
 Padrinho: Alan Roberto de Oliveira · Repositório original da equipe: [Gabriel-ASM/hackathon-vitru-grupo-cinco](https://github.com/Gabriel-ASM/hackathon-vitru-grupo-cinco)
 
