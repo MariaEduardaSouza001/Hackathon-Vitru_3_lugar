@@ -114,7 +114,29 @@ Sou **Maria Eduarda Leonardo De Souza** e, neste projeto, fiquei com quatro fren
 - Fiz a pesquisa do problema e dos dados de evasão na EAD.
 - Fiz as pesquisas e análises que deram origem ao **ROI, ao CAPEX e ao OPEX** do projeto, incluindo o dimensionamento da receita em risco e o retorno esperado do piloto.
 
-**O que aprendi:** desenhar a experiência de uma IA conversacional, em que o tom, o número de perguntas e o que *não* perguntar fazem tanta diferença quanto o modelo. Também aprendi a traduzir um produto de IA em indicadores de negócio que uma banca consegue avaliar.
+### O que aprendi: IA aplicada a um problema de negócio
+
+Este projeto foi onde coloquei em prática o que estudo na disciplina de **IA Aplicada com LLMs e Agentes** (Senac), aplicado a um *business case* real: a **retenção de calouros na EAD**.
+
+**1. Começar pelo problema, não pelo modelo.** A pergunta não era "onde dá para usar IA?", e sim "por que o calouro some antes da primeira entrega?". A resposta dos dados foi a falta de tempo e de rotina. Por isso a solução não é um chatbot de dúvidas: é uma assistente que transforma a rotina real do aluno em um plano possível. O custo do problema (receita em risco por evasão) define quanto a solução pode custar, e foi essa conta que sustentou o **ROI, o CAPEX e o OPEX** do pitch.
+
+**2. Usar a menor autonomia que resolve.** Na aula, aprendi que a maioria dos "agentes" de sucesso é, na verdade, um *workflow* bem desenhado, e que chamar de agente o que segue regras fixas é *agent washing*. Aqui a autonomia fica onde ela gera valor (a conversa por voz, que decide quando perguntar e quando encerrar com *tool calling*), e o resto segue um caminho fixo no código.
+
+**3. Padrão sequencial com portão (*prompt chaining*).** O fluxo é extrator → validação → planejador. Entre as etapas existe um **portão determinístico**: o código classifica os avisos da extração e, se houver um bloqueio real (conflito de horários, sono não informado, compromisso impossível de encaixar), a assistente volta a perguntar ao aluno, uma pergunta curta por vez, antes de chamar o planejador. Como diz a aula: *o portão não melhora a resposta, ele impede que uma resposta errada seja produzida*.
+
+**4. Avaliador-otimizador com critério executável.** A semana gerada é conferida por código (`validateWeeklySchedule`): sobreposição de horários, horários inválidos e aulas fixas que precisam ser preservadas. Se o critério é executável, o avaliador é um teste, não outro LLM. Quando falha, os erros voltam para o modelo em **uma única rodada de reparo**, com teto, porque *a mensagem de erro também é prompt*. Se ainda falhar, a semana não é entregue.
+
+**5. Formato é contrato.** A saída usa *structured outputs* com schema **Zod** (`zodTextFormat`), em vez de pedir JSON no texto e torcer para vir certo. O código que consome a resposta não precisa adivinhar nada.
+
+**6. Parâmetro é contrato de API.** Os modelos de raciocínio não usam `temperature`: o controle é o `reasoning.effort`. E `max_output_tokens` não deixa a resposta mais curta; ele é uma guilhotina que protege o custo. Quem molda o tamanho é a instrução no prompt.
+
+**7. Engenharia de contexto e de prompt.** Cada etapa recebe só o que precisa: papel, tarefa, formato e restrições claros, regras contra invenção de dados e delimitação entre instrução e dado do aluno.
+
+**8. Custo e escala.** Conversa longa cresce de forma quadrática, porque a cada turno o histórico inteiro é reenviado. Por isso o onboarding é curto e objetivo. O custo unitário só faz sentido multiplicado pelo volume de calouros e projetado para o crescimento, e foi assim que pensei o OPEX.
+
+**9. Avaliação em níveis.** Uso o nível mais barato que responde à pergunta: schema e regras validados de forma determinística (testes com `node:test`) e conversas testadas manualmente com rotinas simuladas de alunos, que foi onde atuei nos testes.
+
+**10. Experiência conversacional.** O tom, o número de perguntas e o que *não* perguntar fazem tanta diferença quanto o modelo escolhido. Um aluno sem tempo não vai preencher formulário: ele vai falar por um minuto, e a IA precisa resolver com isso.
 
 ---
 
